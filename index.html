@@ -169,7 +169,7 @@
 
         <section class="mb-12" id="features">
             <h2 class="text-3xl font-semibold mb-6">Why Control Path is Different</h2>
-            <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="space-y-6 mb-8">
                 <div class="feature-card p-6 rounded-lg border border-subtle">
                     <h3 class="text-xl font-semibold mb-3">
                         <svg class="inline-block mr-2" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Type-Safe Flags
@@ -177,9 +177,9 @@
                     <p class="mb-3">
                         Catch typos at compile-time, not runtime. Full TypeScript support with IDE autocomplete.
                     </p>
-                    <pre class="mt-4"><code class="language-typescript">// TypeScript catches this typo at compile-time
-const enabled = evaluator.newDashbord(user, context);
-// ❌ Property 'newDashbord' does not exist</code></pre>
+                    <pre class="mt-4"><code class="language-typescript"><span class="token comment">// TypeScript catches this typo at compile-time</span>
+<span class="token keyword">const</span> enabled <span class="token operator">=</span> evaluator<span class="token punctuation">.</span><span class="token function">newDashbord</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ❌ Property 'newDashbord' does not exist</span></code></pre>
                 </div>
                 
                 <div class="feature-card p-6 rounded-lg border border-subtle">
@@ -252,23 +252,23 @@ const enabled = evaluator.newDashbord(user, context);
                     <p class="leading-relaxed mb-3">
                         Define your flags in <code>flags.definitions.yaml</code> in your repository:
                     </p>
-                    <pre><code class="language-yaml">flags:
-  - name: new_dashboard
-    type: boolean
-    default: OFF
-    description: "New dashboard UI experiment"
+                    <pre><code class="language-yaml"><span class="token key atrule">flags</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> new_dashboard
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> boolean
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> OFF
+    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"New dashboard UI experiment"</span>
   
-  - name: checkout_experiment
-    type: multivariate
-    default: control
-    description: "Checkout flow experiment"
-    variations:
-      - name: CONTROL
-        value: "control"
-      - name: VARIANT_A
-        value: "variant_a"
-      - name: VARIANT_B
-        value: "variant_b"</code></pre>
+  <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> checkout_experiment
+    <span class="token key atrule">type</span><span class="token punctuation">:</span> multivariate
+    <span class="token key atrule">default</span><span class="token punctuation">:</span> control
+    <span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Checkout flow experiment"</span>
+    <span class="token key atrule">variations</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> CONTROL
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"control"</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> VARIANT_A
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"variant_a"</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> VARIANT_B
+        <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"variant_b"</span></code></pre>
                 </div>
                 
                 <div>
@@ -276,8 +276,8 @@ const enabled = evaluator.newDashbord(user, context);
                     <p class="leading-relaxed mb-3">
                         The CLI compiles deployment configurations into compact MessagePack AST artifacts:
                     </p>
-                    <pre><code class="language-bash">$ controlpath compile --env production
-✓ Compiled .controlpath/production.ast (8.2KB)</code></pre>
+                    <pre><code class="language-bash">$ controlpath compile <span class="token parameter variable">--env</span> production
+✓ Compiled .controlpath/production.ast <span class="token punctuation">(</span><span class="token number">8</span>.2KB<span class="token punctuation">)</span></code></pre>
                 </div>
                 
                 <div>
@@ -285,23 +285,23 @@ const enabled = evaluator.newDashbord(user, context);
                     <p class="leading-relaxed mb-3">
                         Generated SDKs provide type-safe methods with full IDE autocomplete:
                     </p>
-                    <pre><code class="language-typescript">import { Evaluator } from './flags';
+                    <pre><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Evaluator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./flags'</span><span class="token punctuation">;</span>
 
-const evaluator = new Evaluator();
-await evaluator.init({ artifact: './production.ast' });
+<span class="token keyword">const</span> evaluator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Evaluator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">await</span> evaluator<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">{</span> artifact<span class="token operator">:</span> <span class="token string">'./production.ast'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-// Type-safe flag evaluation
-const showNewDashboard = await evaluator.newDashboard(user, context);
-// ✅ TypeScript knows this returns boolean
+<span class="token comment">// Type-safe flag evaluation</span>
+<span class="token keyword">const</span> showNewDashboard <span class="token operator">=</span> <span class="token keyword">await</span> evaluator<span class="token punctuation">.</span><span class="token function">newDashboard</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> context<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ✅ TypeScript knows this returns boolean</span>
 
-// Batch evaluation with type safety
-const flags = await evaluator.evaluateBatch(
-  ['newDashboard', 'checkoutExperiment'] as const,
-  user,
+<span class="token comment">// Batch evaluation with type safety</span>
+<span class="token keyword">const</span> flags <span class="token operator">=</span> <span class="token keyword">await</span> evaluator<span class="token punctuation">.</span><span class="token function">evaluateBatch</span><span class="token punctuation">(</span>
+  <span class="token punctuation">[</span><span class="token string">'newDashboard'</span><span class="token punctuation">,</span> <span class="token string">'checkoutExperiment'</span><span class="token punctuation">]</span> <span class="token keyword">as</span> <span class="token keyword">const</span><span class="token punctuation">,</span>
+  user<span class="token punctuation">,</span>
   context
-);
-// ✅ flags.newDashboard: boolean
-// ✅ flags.checkoutExperiment: 'control' | 'variant_a' | 'variant_b'</code></pre>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// ✅ flags.newDashboard: boolean</span>
+<span class="token comment">// ✅ flags.checkoutExperiment: 'control' | 'variant_a' | 'variant_b'</span></code></pre>
                 </div>
                 
                 <div class="highlight-box mt-6 p-5 rounded-lg">

@@ -27,9 +27,12 @@
     <meta property="twitter:description" content="Open-source, type-safe feature flags that catch typos at compile-time, not runtime. Git-native workflow with zero network calls. Self-hosted, no SaaS dependencies.">
     <!-- <meta property="twitter:image" content="https://controlpath.dev/og-image.png"> -->
     
-    <!-- Favicon - Add when favicon files are created -->
-    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg"> -->
-    <!-- <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
     
     <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,9 +114,10 @@
 
     <!-- Navigation Bar -->
     <nav class="nav-main w-full max-w-5xl flex justify-between items-center py-4 px-6 rounded-xl shadow-md mb-8" role="navigation" aria-label="Main navigation">
-        <div class="flex items-center">
-            <a href="/" class="text-2xl font-bold text-primary" aria-label="Control Path home">
-                Control Path
+        <div class="flex items-center gap-3">
+            <a href="/" class="flex items-center gap-3" aria-label="Control Path home">
+                <img src="/logo.png" alt="Control Path logo" class="h-8 w-8" width="32" height="32">
+                <span class="text-2xl font-bold text-primary">Control Path</span>
             </a>
         </div>
         <div class="flex flex-wrap gap-4 md:gap-6">
